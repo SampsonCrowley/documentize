@@ -34,5 +34,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.5.0"
   spec.add_development_dependency "guard", "~> 2.14"
-  spec.add_development_dependency "guard-rake"
 end
