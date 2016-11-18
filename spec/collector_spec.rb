@@ -1,9 +1,10 @@
-require 'collector'
-describe Collector do
+require 'documentize/collector'
 
-  let(:col){ Collector.new }
-  let(:lines) { File.readlines("test.rb").map {|line| line.strip} - [""] }
-  let(:no_header) { File.readlines("no_header.rb").map {|line| line.strip} - [""] }
+describe Documentize::Collector do
+
+  let(:col){ Documentize::Collector.new }
+  let(:lines) { File.readlines("#{$test_files}/test.rb").map {|line| line.strip} - [""] }
+  let(:no_header) { File.readlines("#{$test_files}/no_header.rb").map {|line| line.strip} - [""] }
 
   describe "#run" do
 
