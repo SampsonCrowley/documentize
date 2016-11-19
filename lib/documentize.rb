@@ -31,7 +31,8 @@ module Documentize
       @tree, @header = collector.run(@file)
       informator.gen_info(tree)
       informator.clear_screen
-      Printer.print_with_docs(tree)
+
+      Printer.print_with_docs(tree, header)
     end
 
     private

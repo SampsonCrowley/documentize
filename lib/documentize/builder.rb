@@ -6,14 +6,14 @@ module Documentize
       do_block:      /\sdo[\s\|.*]/
     }
 
-    def self.build_docs(branch)
+    def self.build_docs(branch, indent = 0)
       doc_str = ""
-      doc_str << "# Public: #{branch[:desc]}\n#\n"
+      doc_str << "#{'  '*indent}# Public: #{branch[:desc]}\n#{' '*indent}#\n"
       if branch[:args]
         branch[:args].each do |arg|
-          doc_str << "# #{arg[:name]} - #{arg[:type]}: #{arg[:desc]}\n"
+          doc_str << "#{' '*indent}# #{arg[:name]} - #{arg[:type]}: #{arg[:desc]}\n"
         end
-        doc_str << "# \n"
+        doc_str << "#{' '*indent}# \n"
       end
       doc_str
     end
@@ -32,7 +32,7 @@ module Documentize
 
     def self.build_code(code, indent = 0)
       str = ""
-      str << build_docs(code) if code[:doc]
+      str << build_docs(code, indent) if code[:doc]
       str << "  "*indent
       str << "#{code[:type]} #{code[:name]}"
       str << build_args(code[:args]) if code[:args]
