@@ -68,7 +68,9 @@ module Documentize
           items = arg.split("=").map{ |item| item.strip }
           {
             name: items[0],
-            default: items[1]
+            default: items[1],
+            type: nil,
+            test: nil
           }
         end
       end
@@ -83,12 +85,13 @@ module Documentize
           cmd = breakup[1]
         end
         {
-            type: type,
-            name: cmd,
-            args: args,
-            content: [],
-            doc: nil
-          }
+          type: type,
+          name: cmd,
+          desc: nil,
+          doc: nil,
+          args: args,
+          content: [],
+        }
       end
 
       def remove_headers(file)

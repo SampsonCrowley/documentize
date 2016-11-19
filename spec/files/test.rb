@@ -1,8 +1,8 @@
 require 'test'
 
-class Pointless(arg1, arg2, arg3, arg4)
+class Pointless
 
-  def do_nothing
+  def do_nothing(arg1, arg2 = nil, arg3, arg4)
     trick_you do |test|
       even_trickier do |test| bad_format end
     end

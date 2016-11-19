@@ -1,6 +1,9 @@
 require "documentize/version"
+require "documentize/printer"
+require "documentize/builder"
 require "documentize/collector"
-require "documentize/generator"
+require "documentize/informator"
+
 
 
 module Documentize
@@ -10,12 +13,12 @@ module Documentize
       shbang:      /^#!.*?ruby$/
     }
 
-    attr_reader :collector, :file, :header, :tree
+    attr_reader :collector, :file, :informator, :header, :tree
 
     def initialize(file_name)
       @file = load_file(file_name)
       @collector = Collector.new
-      @generator = Generator.new
+      @informator = Informator.new
     end
 
     def load_file(file_name)
@@ -26,7 +29,9 @@ module Documentize
 
     def run
       @tree, @header = collector.run(@file)
-      # generator.gen_docs(tree)
+      informator.gen_info(tree)
+      informator.clear_screen
+      Printer.print_with_docs(tree)
     end
 
     private

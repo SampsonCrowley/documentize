@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'documentize'
+
+
+doc = Documentize::Documentize.new(ARGV[0])
+ARGV.clear
+
+doc.run
