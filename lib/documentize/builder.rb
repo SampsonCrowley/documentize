@@ -3,7 +3,8 @@ module Documentize
 
     REGEX = {
       bad_do_block:  /\sdo.*?end/,
-      do_block:      /\sdo[\s\|.*]/
+      do_block:      /\sdo[\s\|.*]/,
+      flow:          /^(if|unless|while|for).*?/
     }
 
     def self.build_docs(branch, indent = 0)
@@ -50,12 +51,12 @@ module Documentize
           str << "  "*(indent+1) + "#{item} \n"
           str << "\n" if item =~ /end/ && item !~ REGEX[:bad]
 
-          indent += 1 if item =~ REGEX[:do_block] && item !~ REGEX[:bad]
+          indent += 1 if (item =~ REGEX[:do_block] || item =~ REGEX[:flow]) && item !~ REGEX[:bad]
 
         end
       end
 
-      str << "  "*indent
+      str << "  " * indent
       str << "end\n"
       indent -= 1
       str << "\n"
