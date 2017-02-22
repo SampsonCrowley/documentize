@@ -35,7 +35,7 @@ module Documentize
       str = ""
       str << build_docs(code, indent) if code[:doc]
       str << "  "*indent
-      str << "#{code[:type]} #{code[:name]}"
+      str << "#{code[:type] == "method" ? "def" : code[:type]} #{code[:name]}"
       str << build_args(code[:args]) if code[:args]
       str << "\n\n"
 
