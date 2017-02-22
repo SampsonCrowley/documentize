@@ -6,6 +6,7 @@ module Documentize
       header:      /^require/,
       block:       /\sdo[\s\|.*]/,
       inline_do:   /\sdo.*?end/,
+      flow:        /^(if|unless|while|for).*?/,
       is_class:    /^class/,
       is_method:   /^def/,
       is_module:   /^module/,
@@ -34,7 +35,7 @@ module Documentize
 
             item[:content], queue = build(queue)
 
-          elsif item =~ REGEX[:block]
+          elsif item =~ REGEX[:block] || item =~ REGEX[:flow]
 
             skips += 1 unless item =~ REGEX[:inline_do]
 
