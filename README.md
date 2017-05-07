@@ -12,7 +12,7 @@ run the following in your console:
 
 ## Usage
 
-Documentize takes any ruby file as an argument in the CLI, relative to you current working directory:
+Documentize takes any ruby file as an argument in the CLI, relative to your current working directory:
 
     $ documentize my_ruby_file.rb
 

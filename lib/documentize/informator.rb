@@ -1,8 +1,6 @@
 module Documentize
   class Informator
 
-    
-
     def clear_screen
       system("cls") || system("tput reset") || system("clear") || puts("\e[H\e[2J")
     end
@@ -82,7 +80,7 @@ module Documentize
 
     end
 
-    
+
 
     def line_break
       puts

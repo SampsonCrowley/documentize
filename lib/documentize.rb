@@ -4,8 +4,6 @@ require "documentize/builder"
 require "documentize/collector"
 require "documentize/informator"
 
-
-
 module Documentize
   class Documentize
     REGEX = {
